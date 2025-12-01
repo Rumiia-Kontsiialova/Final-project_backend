@@ -1,7 +1,10 @@
 import express, {Application} from "express";
 import cors from "cors";
+
 import notFoundHandler from "./middlewares/notFound.js";
 import errorHandler from "./middlewares/errorHandler.js";
+
+import authRouter from "./routes/auth.router.js"
 
 const startServer = (): void => {
     const app: Application = express();
@@ -11,6 +14,8 @@ const startServer = (): void => {
 
     app.use(notFoundHandler);
     app.use(errorHandler);
+
+    app.use("/api/auth", authRouter);
 
     const port: number = Number(process.env.PORT) || 3000;
 
