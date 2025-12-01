@@ -12,10 +12,10 @@ const startServer = (): void => {
     app.use(cors());
     app.use(express.json());
 
+    app.use("/api/auth", authRouter);
+
     app.use(notFoundHandler);
     app.use(errorHandler);
-
-    app.use("/api/auth", authRouter);
 
     const port: number = Number(process.env.PORT) || 3000;
 
