@@ -15,11 +15,9 @@ export const registerController = async (req: Request, res: Response): Promise<v
     });
 };
 
-export const loginController = async (req: Request, res: Response): Promise<void> => {
+export const loginController = async (req: Request, res: Response) => {
     validateBody(loginSchema, req.body);
     const result = await loginUser(req.body);
 
-    res.status(201).json({
-        message: "User logged successfully"
-    });
+    res.json(result);
 }
