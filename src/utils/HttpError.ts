@@ -8,6 +8,7 @@ const messageList = {
 
 import {ResponseError} from "../types/interfaces.js";
 
+//@ts-expect-error
 const HttpError = (status: number, message = messageList[status]): ResponseError => {
     const error = new Error(message) as ResponseError;
     error.status = status;

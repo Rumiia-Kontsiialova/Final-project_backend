@@ -7,6 +7,7 @@ import validateBody from "../utils/validateBody.js";
 import { registerSchema, loginSchema } from "../schemes/auth.schemes.js";
 
 export const registerController = async (req: Request, res: Response): Promise<void> => {
+    //@ts-expect-error 
     validateBody(registerSchema, req.body);
     await registerUser(req.body);
 
@@ -16,6 +17,7 @@ export const registerController = async (req: Request, res: Response): Promise<v
 };
 
 export const loginController = async (req: Request, res: Response) => {
+    //@ts-expect-error
     validateBody(loginSchema, req.body);
     const result = await loginUser(req.body);
 

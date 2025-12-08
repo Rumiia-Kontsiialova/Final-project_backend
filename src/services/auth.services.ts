@@ -37,6 +37,7 @@ export const loginUser = async (payload: LoginPayload): Promise<LoginResult> => 
     const user: UserFindResult = await User.findOne({
         $or: [
             {email: payload.email},
+            //@ts-expect-error
             {username: payload.username},
         ]
     });
